@@ -121,18 +121,19 @@ p {
 }
 
 .banner {
-    width: 80%;
-    padding: 5px 0;
+    width: 70%;
+    padding: 10px;
     background-color: #252525;
     outline: 1px solid #484848;
+    margin-left: 11.5%;
 }
 
 .banner img {
     display: block;
     -webkit-background-size: cover;
     background-size: cover;
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
+/*     margin: 0 auto; */
 }
 
 .content_wrap a,

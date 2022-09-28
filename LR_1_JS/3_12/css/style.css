@@ -1,0 +1,5 @@
+#result2 {
+    margin: auto auto;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+}

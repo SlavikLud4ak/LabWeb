@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>YaroslavLudchak</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>JavaScript 1</h1>
+    <hr>
+    <a href="#" onclick="alert('Hello, world!'); ">Select me!</a>
+
+    <h1>JavaScript 2</h1>
+    <hr>
+    <a href="#" onmouseover="document.write('<h1>Hello, world!</h1>'); ">Select me!</a>
+
+    <h1>JavaScript 3</h1>
+    <script src="3_3.js"></script>
+
+    <h1>JavaScript 4</h1>
+    <script src="3_4.js"></script>
+
+    <h1>JavaScript 5</h1>
+    <a href="#" onmouseover="alert(prompt())">Link</a>
+
+    <h1>JavaScript 6</h1>
+    <button onclick="alert(eval(prompt('Введіть вираз:')))">Обчислити</button>
+
+    <h1>JavaScript 7</h1>
+    <script>
+        function MaxN() {
+            let n1 = prompt('Введіть перше число:');
+            let n2 = prompt('Введіть друге число:');
+            let maxNumber = Math.max(n1, n2);
+            alert("Максимальне число: " + maxNumber);
+        }
+    </script>
+    <button onclick="MaxN()">Максимальне число</button>
+
+    <h1>JavaScript 8</h1>
+    <script>
+        let seasons = ['Зима', 'Весна', 'Літо', 'Осінь'];
+
+        function InputMonth() {
+            let n = prompt('Введіть номер місяця:');
+
+            if (n == 1 || n == 2 || n == 12) {
+                alert("Пора року: " + seasons[0]);
+                return;
+            }
+            if (n == 3 || n == 4 || n == 5) {
+                alert("Пора року: " + seasons[2]);
+                return;
+            }
+            if (n == 6 || n == 7 || n == 8) {
+                alert("Пора року: " + seasons[3]);
+                return;
+            }
+            if (n == 9 || n == 10 || n == 11) {
+                alert("Пора року: " + seasons[4]);
+                return;
+            }
+        }
+    </script>
+    <button onclick="InputMonth()">Пора року по місяцю</button>
+
+    <h1>JavaScript 9</h1>
+    <script>
+        let com = confirm();
+
+        if (com) {
+            document.write("<h1>OК</h1>")
+        } else {
+            document.write("<h1>Скасувати</h1>")
+        }
+    </script>
+
+    <h1>JavaScript 10</h1>
+    <div id="result"></div>
+    <script src="3_10.js"></script>
+
+    <h1>JavaScript 11</h1>
+    <a target="_blank" href="3_11/3_11.html">Task</a>
+
+
+    <h1>JavaScript 12</h1>
+    <a target="_blank" href="3_12/3_12.html">Task</a>
+
+    <h1>JavaScript Exemple</h1>
+    <a target="_blank" href="Examples/index.html">Task</a>
+
+
+</body>
+
+</html>

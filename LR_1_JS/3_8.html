@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>YaroslavLudchak</title>
+</head>
+
+<body>
+    <script>
+        let seasons = ['Зима', 'Весна', 'Літо', 'Осінь'];
+
+        function InputMonth() {
+            let n = prompt('Введіть номер місяця:');
+
+            if (n == 1 || n == 2 || n == 12) {
+                alert("Пора року: " + seasons[0]);
+                return;
+            }
+            if (n == 3 || n == 4 || n == 5) {
+                alert("Пора року: " + seasons[2]);
+                return;
+            }
+            if (n == 6 || n == 7 || n == 8) {
+                alert("Пора року: " + seasons[3]);
+                return;
+            }
+            if (n == 9 || n == 10 || n == 11) {
+                alert("Пора року: " + seasons[4]);
+                return;
+            }
+        }
+    </script>
+    <button onclick="InputMonth()">Пора року по місяцю</button>
+</body>
+
+</html>

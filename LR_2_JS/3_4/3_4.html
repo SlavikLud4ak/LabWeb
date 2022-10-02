@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ludchak</title>
+    <script language="JavaScript">
+        numimg = 0;
+        imgslide = new Array();
+        imgslide[0] = new Image();
+        imgslide[1] = new Image();
+        imgslide[2] = new Image();
+
+        imgslide[0] = "img/apr1_background.jpg";
+        imgslide[1] = "img/apr2_background.jpg";
+        imgslide[2] = "img/apr3_background.jpg";
+
+        function dem(n) {
+            if (n == 1) {
+                numimg++;
+                if (numimg == 3) {
+                    numimg = 0;
+                }
+            } else {
+                numimg--;
+                if (numimg == -1) {
+                    numimg = 2;
+                }
+            }
+            document.images[0].src = imgslide[numimg];
+        }
+    </script>
+</head>
+
+<body>
+    <button onClick="dem(0)"> Back </button>
+    <img src="img/apr1_background.jpg" width="800" height="500">
+    <button onClick="dem(1)"> Next </button>
+</body>
+
+</html>

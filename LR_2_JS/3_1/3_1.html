@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Yaroslav Ludchak</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <form action="#">
+
+        <div id="inptName">Впишіть сюди своє ім'я </div>
+        <input type="text" onfocus="show()">
+        <div>
+            <input type="radio" id="inpt1" name="inpt" onchange="Change()">
+            <label for="inpt1" id="l1">Морозиво</label>
+            <input type="radio" id="inpt2" name="inpt" onchange="Change()">
+            <label for="inpt2" id="l2">Шоколад</label>
+            <div id="changeUser">Ви обрали: </div>
+        </div>
+
+        <button type="submit" onclick="alert('Дякую за участь')">Ок</button>
+    </form>
+    <script>
+        let inptName = document.getElementById("inptName");
+        let changeUser = document.getElementById("changeUser");
+        let inpt1 = document.getElementById("inpt1");
+        let inpt2 = document.getElementById("inpt2");
+        let l1 = document.getElementById("l1");
+        let l2 = document.getElementById("l2");
+
+        function show() {
+            console.clear()
+            inptName.style.display = "block"
+            console.log("Впишіть сюди своє ім'я")
+        }
+
+        function Change() {
+            if (inpt1.checked) {
+                console.clear()
+                changeUser.innerHTML = "Ви обрали: " + l1.textContent
+                console.log("Ви обрали:" + l1.textContent)
+
+            }
+            if (inpt2.checked) {
+                console.clear()
+                changeUser.innerHTML = "Ви обрали: " + l2.textContent
+                console.log("Ви обрали: " + l2.textContent)
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ludchak</title>
+</head>
+
+<body>
+    <script>
+        function openWindow() {
+            let questOnOpenWin = confirm("Відкрити інший документ?")
+            questOnOpenWin ? window.open('new.html') : window.close()
+        }
+    </script>
+
+    <button onclick="openWindow()">Кнопка</button>
+</body>
+
+</html>

@@ -2,7 +2,8 @@
 let str, num = parseInt(Math.random() * 10) - 5
 while (true) {
     str = +prompt("Введіть суму ставки: ")
-    if (Number.isInteger(str) == false) continue
+    console.log(str)
+    if (isNaN(str) == true || str <= 0) continue
     else break
 }
 console.log(num)

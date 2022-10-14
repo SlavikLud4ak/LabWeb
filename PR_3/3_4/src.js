@@ -1,6 +1,10 @@
 // ------------------------- TASK 1 -------------------------
-let str = +prompt("Введіть суму ставки: ")
-let num = parseInt(Math.random() * 10) - 5
+let str, num = parseInt(Math.random() * 10) - 5
+while (true) {
+    str = +prompt("Введіть суму ставки: ")
+    if (Number.isInteger(str) == false) continue
+    else break
+}
 console.log(num)
 
 function printWin() {

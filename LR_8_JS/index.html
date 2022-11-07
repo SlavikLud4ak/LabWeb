@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">border-radius</button>
+        <script>
+            // Get the element with id="defaultOpen" and click on it
+        </script>
+
+        <button class="tablinks" onclick="openCity(event, 'Paris')">max-width</button>
+        <button class="tablinks" onclick="openCity(event, 'Tokyo')">opacity</button>
+    </div>
+
+    <!-- Tab content -->
+    <div id="London" class="tabcontent">
+        <div class="body">
+            <div class="container">
+                <div class="box">
+                    <div class="screen">
+                        <div class="shape"></div>
+                    </div>
+                    <div class="code-cont">
+                        <span class="code">
+                            border-radius: <span class="code-value">0px 0px 0px 0px</span>
+                        </span>
+                    </div>
+                    <br>
+                    <div class="controls clear-fix">
+                        <div class="float-left">
+                            <label>Top</label>
+                            <br>
+                            <input class="range top m-3" type="range"></input>
+                            <br>
+                            <label>Right</label>
+                            <br>
+                            <input class="range right m-3" type="range"></input>
+                        </div>
+                        <div class="float-right">
+                            <label>Bottom</label>
+                            <br>
+                            <input class="range bottom m-3" type="range"></input>
+                            <br>
+                            <label>Left</label>
+                            <br>
+                            <input class="range left m-3" type="range"></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="Paris" class="tabcontent">
+        <div class="body">
+            <div class="container">
+                <div class="box">
+                    <div class="screen">
+                        <div class="shape-max-width">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas accusamus aperiam aut qua</div>
+                    </div>
+                    <div class="code-cont">
+                        <span class="code">
+                            max-width: <span class="code-value-max-width">0px</span>
+                        </span>
+                    </div>
+                    <br>
+                    <div class="controls clear-fix">
+                        <div class="float-left">
+                            <label>Value</label>
+                            <br>
+                            <input class="range-max-width value-max-width m-3" type="range"></input>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="Tokyo" class="tabcontent">
+        <div class="body">
+            <div class="container">
+                <div class="box">
+                    <div class="screen">
+                        <div class="shape-opacity"></div>
+                    </div>
+                    <div class="code-cont">
+                        <span class="code">
+                            opacity: <span class="code-value-opacity">0;</span>
+                        </span>
+                    </div>
+                    <br>
+                    <div class="controls clear-fix">
+                        <div class="float-left">
+                            <label>Value</label>
+                            <br>
+                            <input class="range-opacity value-opacity m-3" type="range"></input>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

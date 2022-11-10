@@ -1,0 +1,40 @@
+.box-shadow {
+    box-shadow: 1px 1px 5px #707377;
+}
+
+.text-shadow {
+    text-shadow: 0 2px 5px #707377;
+}
+
+.nav-link {
+    padding: 0rem 1rem;
+}
+
+::placeholder {
+    color: #e6e6e6 !important;
+}
+
+.line-through {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.edit-line {
+    margin: 3px 0;
+    border: 1px solid #ced4da;
+    box-shadow: inset 0 -1px 5px #ced4da;
+}
+
+input:focus {
+    outline: none
+}
+
+.nav-link {
+    border: 2px solid transparent;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background-color: transparent !important;
+    border: 2px solid #6c757d;
+}

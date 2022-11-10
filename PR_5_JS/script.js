@@ -63,7 +63,7 @@ $(document).ready(function() {
         }
     }
 
-    // 建立 li
+
     function createList(text, num) {
         const createLi = document.createElement('li');
         const createInput = document.createElement('input');
@@ -86,7 +86,7 @@ $(document).ready(function() {
         document.querySelector('.list-group').appendChild(createLi);
     }
 
-    // 新增
+
     $('#addList').keyup(function(e) {
         if (e.keyCode === 13) {
             let textValue = $(this).val();

@@ -54,3 +54,7 @@ img:hover {
 .complated {
     opacity: 0.5;
 }
+
+.show-deleter {
+    padding-left: 10px;
+}

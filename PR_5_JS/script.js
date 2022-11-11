@@ -73,14 +73,15 @@ function showTodos() {
     listGroupTodo.innerHTML = ''
     todos.forEach((item, i) => {
         listGroupTodo.innerHTML += `
-        <li  ondblclick="setCompleted(${i})" class="list-group-item d-flex justify-content-between ${
-      item.completed == true ? 'complated' : ''
-    } ">
+        
+        <li  ondblclick=(editTodo(${i})) class="list-group-item d-flex justify-content-between ${
+      item.completed == true ? 'complated' : ''} ">
              ${item.text}
+             
         <div class="todo-icons">
           <span class="opacity-50 me-2">${item.time}</span>
-          <i class="fas fa-pen me-2 text-warning" onclick=(editTodo(${i})) src="img/edit.svg" alt="edit icon" width="25" height="25"></i>
-          <i class="fas fa-trash text-danger" onclick=(deleteTodo(${i}))  src="img/delete.svg" alt="delete icon" width="25" height="25"></i>
+          <input type="checkbox" onclick="setCompleted(${i})" class="fas me-2 text-warning" ${item.completed == true ? 'checked' : ''}>          
+          <i class="fas fa-trash text-danger show-deleter" onclick=(deleteTodo(${i}))  src="img/delete.svg" alt="delete icon" width="40" height="40"></i>
         </div>
       </li>
     `
@@ -93,12 +94,12 @@ function showTodosComplete() {
     todos.forEach((item, i) => {
         if (item.completed == true) {
             listGroupTodo.innerHTML += `
-        <li  ondblclick="setCompleted(${i})" class="list-group-item d-flex justify-content-between ${ item.completed == true ? 'complated' : '' } ">
+        <li ondblclick=(editTodo(${i})) class="list-group-item d-flex justify-content-between ${ item.completed == true ? 'complated' : '' } ">
              ${item.text}
         <div class="todo-icons">
           <span class="opacity-50 me-2">${item.time}</span>
-          <i class="fas fa-pen me-2 text-warning" onclick=(editTodo(${i})) src="img/edit.svg" alt="edit icon" width="25" height="25"></i>
-          <i class="fas fa-trash text-danger" onclick=(deleteTodo(${i}))  src="img/delete.svg" alt="delete icon" width="25" height="25"></i>
+          <input type="checkbox" onclick="setCompleted(${i})" class="fas me-2 text-warning" ${item.completed == true ? 'checked' : ''}>           
+          <i class="fas fa-trash text-danger show-deleter" onclick=(deleteTodo(${i}))  src="img/delete.svg" alt="delete icon" width="40" height="40"></i>
         </div>
       </li>
     `
@@ -112,12 +113,14 @@ function showTodosNonComplete() {
     todos.forEach((item, i) => {
         if (item.completed == false) {
             listGroupTodo.innerHTML += `
-        <li  ondblclick="setCompleted(${i})" class="list-group-item d-flex justify-content-between ${ item.completed == true ? 'complated' : '' } ">
+            
+        <li ondblclick=(editTodo(${i})) class="list-group-item d-flex justify-content-between ${ item.completed == true ? 'complated' : '' } ">
              ${item.text}
-        <div class="todo-icons">
+             
+        <div class="todo-icons">        
           <span class="opacity-50 me-2">${item.time}</span>
-          <i class="fas fa-pen me-2 text-warning" onclick=(editTodo(${i})) src="img/edit.svg" alt="edit icon" width="25" height="25"></i>
-          <i class="fas fa-trash text-danger" onclick=(deleteTodo(${i}))  src="img/delete.svg" alt="delete icon" width="25" height="25"></i>
+          <input type="checkbox" onclick="setCompleted(${i})" class="fas me-2 text-warning" ${item.completed == true ? 'checked' : ''}>                   
+          <i class="fas fa-trash text-danger show-deleter" onclick=(deleteTodo(${i}))  src="img/delete.svg" alt="delete icon" width="40" height="40"></i>
         </div>
       </li>
     `
@@ -199,8 +202,17 @@ formEdit.addEventListener('submit', (e) => {
 
 // editTodo
 function editTodo(id) {
-    open()
-    editItemId = id
+    const completedTodos = todos.map((item, i) => {
+        if (id == i) {
+            return item.text
+        }
+    })
+
+
+    let found = completedTodos.find(element => element != undefined);
+    formEdit['input-edit'].value = found;
+    open();
+    editItemId = id;
 }
 
 overlay.addEventListener('click', close)

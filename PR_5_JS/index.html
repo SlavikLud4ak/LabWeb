@@ -1,53 +1,77 @@
-<html lang="en">
+<link rel="stylesheet" href="style.css">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD Todo LIST</title>
+    <!--   FontAwesome   -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <!-- BOOTSTRAP CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-    <title>todo list</title>
 </head>
 
-<body class="bg-light">
+<body>
+    <header class="my-5 text-center">
+        <h4 id="full-day">Day Month, Year</h4>
+        <div class="time-container">
+            <span id="hour">Hh</span> :
+            <span id="minute">Mm</span> :
+            <span id="second">Ss</span>
+        </div>
+        <h1 class="display-2 text-primary">
+            Todo List
+        </h1>
+        <small>         
+         
+        </small>
+    </header>
+    <main class="container">
+        <form id="form-create" class="mb-3">
+            <div class="mb-3">
+                <input id="input-create" type="text" class="mb-1 form-control" placeholder="Type todo..." autocomplete="off" />
+                <span id="message-create" class="text-danger"></span>
+            </div>
+            <button class="btn btn-outline-primary d-block ms-auto">Add</button>
 
-    <main class="container-fluid mt-3">
-        <article class="container">
-            <header>
-                <h1 class="text-center display-2 text-secondary text-shadow">Мій лист</h1>
-            </header>
-            <section class="row">
-                <div class="card col col-md-8 mx-auto box-shadow rounded-0">
-                    <input type="text" class="form-control form-control-lg border-0" id="addList" placeholder="Що потрібно зробити?">
-                    <ul class="list-group list-group-flush">
-                    </ul>
-                    <div class="card-footer bg-white d-md-flex justify-content-md-between">
-                        <div class="mb-2 mb-md-0 d-flex justify-content-center">
-                            <span class="text-secondary" id="countItems"></span>
-                        </div>
-                        <ul class="nav nav-pills mb-2 mb-md-0 d-flex justify-content-between">
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary active" href="#">Все</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" href="#active">Не виконані</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" href="#completed">Виконані</a>
-                            </li>
-                        </ul>
-                        <div class="d-none d-md-block">
-                            <a href="#" class="text-secondary" id="clearAll">Очистити все</a>
-                        </div>
-                    </div>
+        </form>
+
+        <ul id="list-group-todo" class="list-group"></ul>
+
+        <!-- modal -->
+        <div id="modal" class="modal-todo hidden">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5>Change This Todo</h5>
+                    <i id="close" class="fas fa-times" src="img/close.svg" alt="" width="25" height="25"></i>
                 </div>
-            </section>
-        </article>
+                <div class="card-body">
+                    <form id="form-edit" class="mb-3">
+                        <div class="mb-3">
+                            <input id="input-edit" type="text" class="mb-1 form-control" placeholder="Type todo..." autocomplete="off" />
+                            <span id="message-edit" class="text-danger"></span>
+                        </div>
+                        <button class="btn btn-outline-success d-block ms-auto">
+                Save Changes
+              </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <button class="btn btn-outline-primary" onclick="showTodosComplete()">Виконані завдання</button>
+            <button class="btn btn-outline-primary" onclick="showTodosNonComplete()">Не виконані завдання</button>
+            <button class="btn btn-outline-primary" onclick="showTodos()">Всі</button>
+        </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <div id="overlay" class="overlay hidden"></div>
+
+
+    <!-- SCRTIP -->
+    <!-- BOOSTRAP JS -->
+    <script src="js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>
-
-</html>

@@ -1,0 +1,61 @@
+[{
+        "name": "Volkswagen Passat Alltrack",
+        "salePrice": "null",
+        "price": "null",
+        "novelty": "true",
+        "topSale": "false",
+        "img": "https://cdn2.riastatic.com/photosnew/auto/photo/volkswagen_passat-alltrack__469700612f.webp",
+        "available": "false",
+        "chapter": "Passat",
+        "urlProduct": "https://auto.ria.com/uk/auto_volkswagen_passat_alltrack_33437337.html"
+    },
+    {
+        "name": "Audi e-tron 2020",
+        "salePrice": "47300",
+        "price": "48300",
+        "novelty": "false",
+        "topSale": "false",
+        "img": "https://cdn4.riastatic.com/photosnew/auto/photo/audi_e-tron__469791309f.webp",
+        "available": "true",
+        "chapter": "Audi",
+        "urlProduct": "https://auto.ria.com/uk/auto_audi_e_tron_33441160.html"
+
+    },
+    {
+        "name": "Volkswagen ID.4 Prime",
+        "salePrice": "50000",
+        "price": "52000",
+        "novelty": "false",
+        "topSale": "true",
+        "img": "https://cdn1.riastatic.com/photosnew/auto/photo/volkswagen_id-4__470718836f.webp",
+        "available": "true",
+        "chapter": "Prime",
+        "urlProduct": "https://auto.ria.com/uk/auto_volkswagen_id_4_33478049.html"
+
+    },
+
+    {
+        "name": "Renault Megane 2011",
+        "salePrice": "null",
+        "price": "8200",
+        "novelty": "false",
+        "topSale": "true",
+        "img": "https://cdn2.riastatic.com/photosnew/auto/photo/renault_megane__462274157f.webp",
+        "available": "true",
+        "chapter": "Megane",
+        "urlProduct": "https://auto.ria.com/uk/auto_renault_megane_33129885.html"
+
+    },
+    {
+        "name": "Audi A6 2012",
+        "salePrice": "17400",
+        "price": "17500",
+        "novelty": "false",
+        "topSale": "false",
+        "img": "https://cdn4.riastatic.com/photosnew/auto/photo/audi_a6__471324814f.webp",
+        "available": "true",
+        "chapter": "Audi",
+        "urlProduct": "https://auto.ria.com/uk/auto_audi_a6_33501861.html"
+
+    }
+]

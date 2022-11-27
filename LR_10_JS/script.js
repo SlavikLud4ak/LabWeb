@@ -1,5 +1,4 @@
-let aboutProducts = [
-];
+let aboutProducts = [];
 
 const basket = document.querySelector(".basket");
 
@@ -16,233 +15,234 @@ let btnsToBasket = null;
 
 let glider = null;
 
-fetch("https://user-maxim-name.github.io/productList/products/products.json")
-  .then((data) => data.json())
-  .then((listProducts) => {
-    aboutProducts = listProducts;
+fetch("https://yaroslav-ludchak1234.github.io/listProducts/itemList.json")
+    .then((data) => data.json())
+    .then((listProducts) => {
+        aboutProducts = listProducts;
 
-    for (let i = 0; i < aboutProducts.length; i++) {
-      wrap.insertAdjacentHTML("beforeend", createCard(aboutProducts[i]));
-    }
-    btnsToBasket = document.querySelectorAll(".to_basket");
-    btnsToBasket.forEach((btn) =>
-      btn.addEventListener("click", addItemTobasket)
-    );
-    glider = new Glider(document.querySelector(".glider"), {
-      slidesToShow: 4,
+        for (let i = 0; i < aboutProducts.length; i++) {
+            wrap.insertAdjacentHTML("beforeend", createCard(aboutProducts[i]));
+        }
+        btnsToBasket = document.querySelectorAll(".to_basket");
+        btnsToBasket.forEach((btn) =>
+            btn.addEventListener("click", addItemTobasket)
+        );
+        glider = new Glider(document.querySelector(".glider"), {
+            slidesToShow: 4,
 
-      draggable: true,
-      rewind: true,
-      arrows: {
-        prev: ".left_arrow",
-        next: ".right_arrow",
-        rewind: true,
-      },
+            draggable: true,
+            rewind: true,
+            arrows: {
+                prev: ".left_arrow",
+                next: ".right_arrow",
+                rewind: true,
+            },
+        });
     });
-  });
 
 document.addEventListener("DOMContentLoaded", (e) => {
-  let storageCount = +localStorage.getItem("basketCount") || null;
-  if (storageCount) {
-    basketCount = storageCount;
-    basketCountShow.style.display = "flex";
-    basketCountShow.textContent = basketCount;
-  }
+    let storageCount = +localStorage.getItem("basketCount") || null;
+    if (storageCount) {
+        basketCount = storageCount;
+        basketCountShow.style.display = "flex";
+        basketCountShow.textContent = basketCount;
+    }
 });
 
 function disableScroll() {
-  document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
 }
+
 function enableScroll() {
-  document.body.style.overflow = "initial";
+    document.body.style.overflow = "initial";
 }
 
 modalWindow.addEventListener("click", (e) => {
-  if (e.target.id == "modal_window") {
-    enableScroll();
-    modalWindow.style.display = "none";
-  }
+    if (e.target.id == "modal_window") {
+        enableScroll();
+        modalWindow.style.display = "none";
+    }
 });
 
 function createModalWindow(content) {
-  disableScroll();
-  modalWindow.firstElementChild.innerHTML = " ";
-  modalWindow.firstElementChild.insertAdjacentElement("afterbegin", content);
-  modalWindow.style.display = "flex";
+    disableScroll();
+    modalWindow.firstElementChild.innerHTML = " ";
+    modalWindow.firstElementChild.insertAdjacentElement("afterbegin", content);
+    modalWindow.style.display = "flex";
 }
 
 function validateValue(element) {
-  const reg = new RegExp("^[1-9]{1}[0-9]{0,}$");
-  let val = element.value;
+    const reg = new RegExp("^[1-9]{1}[0-9]{0,}$");
+    let val = element.value;
 
-  if (!reg.test(val)) {
-    element.previousElementSibling.textContent = "Введіть коректне значення";
-    element.previousElementSibling.classList.add("fail");
-    return -1;
-  }
+    if (!reg.test(val)) {
+        element.previousElementSibling.textContent = "Введіть коректне значення";
+        element.previousElementSibling.classList.add("fail");
+        return -1;
+    }
 }
 
 function addItemTobasket(event) {
-  const priceItem =
-    event.target.previousElementSibling.querySelector(
-      ".only_price"
-    ).textContent;
+    const priceItem =
+        event.target.previousElementSibling.querySelector(
+            ".only_price"
+        ).textContent;
 
-  const nameItem =
-    event.target.parentElement.querySelector(".name_product").textContent;
+    const nameItem =
+        event.target.parentElement.querySelector(".name_product").textContent;
 
-  const imgProduct =
-    event.target.parentElement.querySelector(".image_product").src;
+    const imgProduct =
+        event.target.parentElement.querySelector(".image_product").src;
 
-  const container = document.createElement("div");
+    const container = document.createElement("div");
 
-  container.classList.add("count_products_order");
+    container.classList.add("count_products_order");
 
-  const iCountProducts = document.createElement("input");
-  iCountProducts.setAttribute("type", "number");
-  iCountProducts.setAttribute("value", 1);
-  iCountProducts.setAttribute("min", 1);
+    const iCountProducts = document.createElement("input");
+    iCountProducts.setAttribute("type", "number");
+    iCountProducts.setAttribute("value", 1);
+    iCountProducts.setAttribute("min", 1);
 
-  const btnAddToBasket = document.createElement("div");
+    const btnAddToBasket = document.createElement("div");
 
-  const infoActionSpan = document.createElement("span");
-  infoActionSpan.textContent = "Введіть кількість товару";
-  infoActionSpan.classList.add("txt_action");
+    const infoActionSpan = document.createElement("span");
+    infoActionSpan.textContent = "Введіть кількість товару";
+    infoActionSpan.classList.add("txt_action");
 
-  btnAddToBasket.textContent = "Додати до кошика";
-  btnAddToBasket.classList.add("btn_add_basket");
+    btnAddToBasket.textContent = "Додати до кошика";
+    btnAddToBasket.classList.add("btn_add_basket");
 
-  const closeSpan = document.createElement("span");
-  closeSpan.classList.add("close");
-  closeSpan.textContent = "X";
+    const closeSpan = document.createElement("span");
+    closeSpan.classList.add("close");
+    closeSpan.textContent = "X";
 
-  closeSpan.addEventListener(
-    "click",
-    (e) => (modalWindow.style.display = "none")
-  );
-  container.appendChild(infoActionSpan);
-  container.appendChild(iCountProducts);
-  container.appendChild(btnAddToBasket);
-  container.appendChild(closeSpan);
-
-  btnAddToBasket.addEventListener("click", (e) => {
-    if (validateValue(iCountProducts) == -1) {
-      return;
-    }
-
-    let added = false;
-
-    for (let key in basketItems) {
-      if (basketItems[key].name == nameItem) {
-        basketItems[key].quantity += +iCountProducts.value;
-        added = true;
-      }
-    }
-
-    if (!added) {
-      const id = new Date().getTime();
-
-      basketItems[id] = {
-        id,
-        name: nameItem,
-        price: priceItem,
-        quantity: +iCountProducts.value,
-        imgProduct,
-      };
-      added = false;
-      basketCount++;
-      basketCountShow.style.display = "flex";
-      basketCountShow.textContent = basketCount;
-      localStorage.setItem("basketCount", basketCount);
-    }
-
-    localStorage.setItem("basketItems", JSON.stringify(basketItems));
-
-    const wrapChose = document.createElement("div");
-    wrapChose.classList.add("rltv");
-    const controlBtns = document.createElement("div");
-
-    controlBtns.classList.add("next_action_choose");
-
-    const btnBackToShop = document.createElement("div");
-
-    const successText = document.createElement("span");
-    successText.classList.add("success_txt");
-    successText.textContent = "Товар успішно доданий!";
-
-    const successImage = document.createElement("div");
-    successImage.classList.add("img_info");
-
-    const btnGoToBasketPage = document.createElement("div");
-
-    btnBackToShop.classList.add("btn_control");
-
-    btnBackToShop.textContent = "Повернутися до покупок";
-
-    btnGoToBasketPage.classList.add("btn_control");
-
-    btnGoToBasketPage.textContent = "Перейти до корзини";
-
-    controlBtns.appendChild(btnBackToShop);
-    controlBtns.appendChild(btnGoToBasketPage);
-
-    wrapChose.appendChild(successText);
-    wrapChose.appendChild(successImage);
-    wrapChose.appendChild(controlBtns);
-    wrapChose.appendChild(closeModal());
-
-    btnBackToShop.addEventListener(
-      "click",
-      (e) => (modalWindow.style.display = "none")
+    closeSpan.addEventListener(
+        "click",
+        (e) => (modalWindow.style.display = "none")
     );
-    btnGoToBasketPage.addEventListener("click", (e) => {
-      openBasketWindow(e);
-    });
+    container.appendChild(infoActionSpan);
+    container.appendChild(iCountProducts);
+    container.appendChild(btnAddToBasket);
+    container.appendChild(closeSpan);
 
-    createModalWindow(wrapChose);
-  });
-  createModalWindow(container);
+    btnAddToBasket.addEventListener("click", (e) => {
+        if (validateValue(iCountProducts) == -1) {
+            return;
+        }
+
+        let added = false;
+
+        for (let key in basketItems) {
+            if (basketItems[key].name == nameItem) {
+                basketItems[key].quantity += +iCountProducts.value;
+                added = true;
+            }
+        }
+
+        if (!added) {
+            const id = new Date().getTime();
+
+            basketItems[id] = {
+                id,
+                name: nameItem,
+                price: priceItem,
+                quantity: +iCountProducts.value,
+                imgProduct,
+            };
+            added = false;
+            basketCount++;
+            basketCountShow.style.display = "flex";
+            basketCountShow.textContent = basketCount;
+            localStorage.setItem("basketCount", basketCount);
+        }
+
+        localStorage.setItem("basketItems", JSON.stringify(basketItems));
+
+        const wrapChose = document.createElement("div");
+        wrapChose.classList.add("rltv");
+        const controlBtns = document.createElement("div");
+
+        controlBtns.classList.add("next_action_choose");
+
+        const btnBackToShop = document.createElement("div");
+
+        const successText = document.createElement("span");
+        successText.classList.add("success_txt");
+        successText.textContent = "Товар успішно доданий!";
+
+        const successImage = document.createElement("div");
+        successImage.classList.add("img_info");
+
+        const btnGoToBasketPage = document.createElement("div");
+
+        btnBackToShop.classList.add("btn_control");
+
+        btnBackToShop.textContent = "Повернутися до покупок";
+
+        btnGoToBasketPage.classList.add("btn_control");
+
+        btnGoToBasketPage.textContent = "Перейти до корзини";
+
+        controlBtns.appendChild(btnBackToShop);
+        controlBtns.appendChild(btnGoToBasketPage);
+
+        wrapChose.appendChild(successText);
+        wrapChose.appendChild(successImage);
+        wrapChose.appendChild(controlBtns);
+        wrapChose.appendChild(closeModal());
+
+        btnBackToShop.addEventListener(
+            "click",
+            (e) => (modalWindow.style.display = "none")
+        );
+        btnGoToBasketPage.addEventListener("click", (e) => {
+            openBasketWindow(e);
+        });
+
+        createModalWindow(wrapChose);
+    });
+    createModalWindow(container);
 }
 
 basket.addEventListener("click", (e) => {
-  if (basketCount == 0) {
-    const container = document.createElement("div");
+    if (basketCount == 0) {
+        const container = document.createElement("div");
 
-    container.classList.add("rltv");
+        container.classList.add("rltv");
 
-    const infoMsg = document.createElement("p");
+        const infoMsg = document.createElement("p");
 
-    infoMsg.textContent = "Кошик порожній ";
-    infoMsg.classList.add("info_txt");
-    infoMsg.style.backgroundImage = "url('icons/shopping-cart_empty.png')";
-    container.appendChild(infoMsg);
+        infoMsg.textContent = "Кошик порожній ";
+        infoMsg.classList.add("info_txt");
+        infoMsg.style.backgroundImage = "url('icons/shopping-cart_empty.png')";
+        container.appendChild(infoMsg);
 
-    container.appendChild(closeModal());
+        container.appendChild(closeModal());
 
-    createModalWindow(container);
-    return;
-  }
-  openBasketWindow(e);
+        createModalWindow(container);
+        return;
+    }
+    openBasketWindow(e);
 });
 
 function openBasketWindow(e) {
-  window.location = "basketPage.html";
+    window.location = "basketPage.html";
 }
 
 function closeModal() {
-  const closeSpan = document.createElement("span");
-  closeSpan.classList.add("close");
-  closeSpan.textContent = "X";
+    const closeSpan = document.createElement("span");
+    closeSpan.classList.add("close");
+    closeSpan.textContent = "X";
 
-  closeSpan.addEventListener("click", (e) => {
-    enableScroll();
-    modalWindow.style.display = "none";
-  });
-  return closeSpan;
+    closeSpan.addEventListener("click", (e) => {
+        enableScroll();
+        modalWindow.style.display = "none";
+    });
+    return closeSpan;
 }
 
 function createCard(item) {
-  const card = `
+    const card = `
   
   <div class="card  ${
     item.topSale == "true"
@@ -265,9 +265,9 @@ function createCard(item) {
   }</a>
   <div class="price_product">${
     item.salePrice != "null" && item.available == "true"
-      ? `<p class="current_price"><span class="old_price"> ${item.price} ГРН   </span><span class="only_price">${item.salePrice}</span>  ГРН</p>`
+      ? `<p class="current_price"><span class="old_price"> ${item.price} ДЛР   </span><span class="only_price">${item.salePrice}</span>  ДЛР</p>`
       : item.available == "true"
-      ? `  <p class="currnet_price"><span class="only_price ">${item.price}</span> ГРН</p>`
+      ? `  <p class="currnet_price"><span class="only_price ">${item.price}</span> ДЛР</p>`
       : ""
   }</div>
   ${
